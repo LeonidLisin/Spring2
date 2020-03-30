@@ -9,7 +9,12 @@ import lombok.NoArgsConstructor;
 import ru.geekbrains.supershop.persistence.entities.enums.ProductCategory;
 import ru.geekbrains.supershop.persistence.entities.utils.PersistableEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import java.util.Date;
 import java.util.List;
@@ -35,20 +40,10 @@ public class Product extends PersistableEntity {
     @Enumerated(EnumType.ORDINAL)
     private ProductCategory category;
 
-    @ManyToMany
-    @JoinTable(
-            name = "products_images",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "image_id")
-    )
-    private List<Image> images;
+    @OneToOne
+    @JoinColumn(name = "image")
+    private Image image;
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-//    @OneToOne
-//    @JoinColumn(name = "image")
-//    private Image image;
-
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
 }
