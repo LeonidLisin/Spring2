@@ -1,6 +1,8 @@
 server:
+  port: 8081
   servlet:
     context-path: /supershop
+
 
 spring:
   datasource:
@@ -9,7 +11,14 @@ spring:
     username: postgres
     password: spring2
   jpa:
-    show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
   thymeleaf:
     cache: false
+
+files:
+  storepath:
+    icons:  "C:\\Java\\Spring2\\Lesson3\\DZ\\Icons"
+    images: "C:\\Java\\Spring2\\Lesson3\\DZ\\Images"
