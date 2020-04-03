@@ -7,7 +7,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/onlineshop?useUnicode=true&characterEncoding=utf8
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: Spring2
+    password: admin
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     show-sql: true
