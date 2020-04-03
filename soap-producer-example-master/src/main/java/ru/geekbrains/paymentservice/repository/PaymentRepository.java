@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class PaymentRepository {
 
-    public List<Payment> getPayments(String country) {
+    public List<Payment> getPayments(String country, double price) {
 
         Payment payment1 = new Payment();
         payment1.setId(1);
@@ -44,8 +44,10 @@ public class PaymentRepository {
             add(payment4);
         }}.stream().filter(
             payment -> payment.getCountry().contains(country)
-        ).collect(Collectors.toList());
-
+        ).collect(Collectors.toList())
+                .stream().filter(
+                        payment -> payment.getPrice()==price
+                ).collect(Collectors.toList());
     }
 
 }
