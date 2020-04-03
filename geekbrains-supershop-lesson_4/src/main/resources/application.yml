@@ -1,0 +1,22 @@
+server:
+  servlet:
+    context-path: /supershop
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/onlineshop?useUnicode=true&characterEncoding=utf8
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: Spring2
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  thymeleaf:
+    cache: false
+
+files:
+  storepath:
+    icons:  "E:\\Java\\Spring2\Lesson4\\geekbrains-supershop-lesson_4\\icons"
+    images: "E:\\Java\\Spring2\Lesson4\\geekbrains-supershop-lesson_4\\images"
