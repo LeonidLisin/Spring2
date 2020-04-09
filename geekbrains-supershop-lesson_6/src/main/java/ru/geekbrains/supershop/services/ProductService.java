@@ -51,7 +51,7 @@ public class ProductService {
             predicates.add(criteriaBuilder.equal(productCountryJoin.get("countryTitle"), madein));
 
         if(category != null)
-            predicates.add(criteriaBuilder.equal(productCountryJoin.get("category"), category));
+            predicates.add(criteriaBuilder.equal(root.get("category"), category));
 
 
         productCriteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[]{})));
