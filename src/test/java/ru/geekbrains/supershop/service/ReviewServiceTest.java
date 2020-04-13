@@ -91,8 +91,13 @@ public class ReviewServiceTest {
     }
 
     @Test
-    public void testReviewService(){
+    public void mustReturnReviewByProduct(){
         assertEquals(Arrays.asList(reviewMock), reviewService.getReviewsByProduct(productMock).orElse(null));
+    }
+
+    @Test
+    public void mustReturnReviewByShopuser(){
+        assertEquals(Arrays.asList(reviewMock), reviewService.getReviewsByShopuser(shopuserMock).orElse(null));
     }
 
 }
