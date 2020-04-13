@@ -1,5 +1,6 @@
 package ru.geekbrains.supershop.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @WebMvcTest(controllers = ProductController.class)
 public class ProductControllerMVCTest {
 
+    String jsonReviewPojo;
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -43,11 +46,7 @@ public class ProductControllerMVCTest {
     private ShopuserService shopuserServiceMock;
 
     @Before
-    public void setUp(){
-    }
-
-    @Test
-    public void mustReturnRewiew() throws Exception {
+    public void setUp() throws JsonProcessingException {
 
         ReviewPojo reviewPojoMock = new ReviewPojo();
         reviewPojoMock.setProductId(new UUID(40,40));
@@ -55,8 +54,11 @@ public class ProductControllerMVCTest {
         reviewPojoMock.setCommentary("hello");
 
         ObjectMapper mapper = new ObjectMapper();
-        String jsonReviewPojo = mapper.writeValueAsString(reviewPojoMock);
+        this.jsonReviewPojo = mapper.writeValueAsString(reviewPojoMock);
+    }
 
+    @Test
+    public void mustReturnRewiew() throws Exception {
 
         mockMvc
                 .perform(post("/reviews").
