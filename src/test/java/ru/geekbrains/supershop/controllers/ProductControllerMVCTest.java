@@ -16,6 +16,8 @@ import ru.geekbrains.supershop.services.ProductService;
 import ru.geekbrains.supershop.services.ReviewService;
 import ru.geekbrains.supershop.services.ShopuserService;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -48,7 +50,7 @@ public class ProductControllerMVCTest {
     public void mustReturnRewiew() throws Exception {
 
         ReviewPojo reviewPojoMock = new ReviewPojo();
-        reviewPojoMock.setProductId(null);
+        reviewPojoMock.setProductId(new UUID(40,40));
         reviewPojoMock.setCaptchaCode("unuin");
         reviewPojoMock.setCommentary("hello");
 

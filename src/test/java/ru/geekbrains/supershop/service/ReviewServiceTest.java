@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import ru.geekbrains.supershop.exceptions.EntityNotFoundException;
 import ru.geekbrains.supershop.persistence.entities.Country;
 import ru.geekbrains.supershop.persistence.entities.Product;
 import ru.geekbrains.supershop.persistence.entities.Review;
@@ -98,6 +99,11 @@ public class ReviewServiceTest {
     @Test
     public void mustReturnReviewByShopuser(){
         assertEquals(Arrays.asList(reviewMock), reviewService.getReviewsByShopuser(shopuserMock).orElse(null));
+    }
+
+    @Test
+    public void mustReturnProductID() throws EntityNotFoundException {
+        assertEquals(productMock.getId(), reviewService.moderate(reviewMock.getId(), "approve"));
     }
 
 }
