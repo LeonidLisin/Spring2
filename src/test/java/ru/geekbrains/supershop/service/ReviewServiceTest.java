@@ -66,7 +66,6 @@ public class ReviewServiceTest {
                 .available(true)
                 .image(null)
                 .category(ProductCategory.DRINK)
-                .reviews(null)
                 .madein(countryMock)
                 .build();
 
@@ -77,8 +76,6 @@ public class ReviewServiceTest {
                 .lastName("Bb")
                 .email("00@00.com")
                 .role(Role.ROLE_ADMIN)
-                .purchases(null)
-                .reviews(null)
                 .build();
 
         this.reviewMock = Review.builder()

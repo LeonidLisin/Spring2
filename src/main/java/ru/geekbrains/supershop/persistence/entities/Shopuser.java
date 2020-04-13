@@ -5,11 +5,7 @@ import lombok.*;
 import ru.geekbrains.supershop.persistence.entities.enums.Role;
 import ru.geekbrains.supershop.persistence.entities.utils.PersistableEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -34,10 +30,10 @@ public class Shopuser extends PersistableEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "shopuser")
-    private List<Purchase> purchases;
-
-    @OneToMany(mappedBy = "shopuser")
-    private List<Review> reviews;
+//    @OneToMany(mappedBy = "shopuser", fetch = FetchType.EAGER)
+//    private List<Purchase> purchases;
+//
+//    @OneToMany(mappedBy = "shopuser", fetch = FetchType.EAGER)
+//    private List<Review> reviews;
 
 }
